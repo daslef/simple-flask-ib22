@@ -1,0 +1,40 @@
+<head>
+    <link 
+        rel="stylesheet" 
+        href={{ url_for('static', filename='style.css') }}
+    >
+</head>
+
+<h2>Hi</h2>
+
+{% if error == 'already_exists' %}
+<p>Sorry, seems like this account already exists</p>
+{% elif error == 'password_error' %}
+<p>Passwords don't match. Try again</p>
+{% endif %}
+
+<form method="POST">
+    <div>
+        <label>Name:</label>
+        <input type="text" minlength="5" placeholder="5+ symbols" name="username" required>
+    </div>
+
+    <div>
+        <label>E-mail:</label>
+        <input type="email" placeholder="enter correct email" name="email" required>
+    </div>
+
+    <div>
+        <label>Password:</label>
+        <input type="password" minlength="6" placeholder="6+ symbols" name="pw" required>
+    </div>
+        
+    <div>
+        <label>Password:</label>
+        <input type="password" minlength="6" placeholder="repeat your password" name="pw2" required>
+    </div>
+
+    <input type="submit" value="Send!">
+</form>
+
+<a href="/login">Already have account</a>

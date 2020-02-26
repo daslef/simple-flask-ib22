@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:800|Merriweather&display=swap&subset=cyrillic');
+
+* {
+    border: 1px solid;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+}
+
+h2, h3 {
+    font-family: 'Exo 2', sans-serif;
+}
+
+label {
+    display: block;
+}
+
+form {
+    width: 35%;
+    margin: 10vh 32% 10vh 32%;
+}

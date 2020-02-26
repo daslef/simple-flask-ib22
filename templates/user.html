@@ -1,0 +1,56 @@
+<head>
+    <link 
+        rel="stylesheet" 
+        href={{ url_for('static', filename='style.css') }}
+    >
+</head>
+
+{% if name != session['user'] %}
+<p>Sorry, seems like something went wrong. Sign In / Sign Up again</p>
+<a href="/">To Sign Up</a>
+<br>
+<a href="/login">To Sign In</a>
+
+{% else %}
+<h2>Hi, {{ name }}</h2>
+<a href="/logout">Log Out</a>
+
+{% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+<ol>
+    {% for task in tasks %}
+    <li>{{ task.title + ' ' + task.created_on }} 
+        <a href={{ "/delete/" + loop.index|string }}>Remove</a>
+    </li>
+    {% endfor %}
+</ol>
+
+<form method="POST">
+    <div>
+        <label>Title</label>
+        <input 
+            type="text" 
+            name="title" 
+            minlength="3" 
+            maxlength="20" 
+            required
+        >
+    </div>
+
+    <div>
+        <label>Details</label>
+        <input type="text" name="content">
+    </div>
+
+    <div>
+        <label>Deadline (optional)</label>
+        <input type="date" name="deadline_on">
+    </div>
+
+    <input type="submit" value="Add Task!">
+</form>
+{% endif %}
